@@ -1,24 +1,28 @@
 /* eslint-disable prettier/prettier */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-
-
-
-import { Body, Controller, Get,Post } from '@nestjs/common';
+// src/app.controller.ts
+// src/app.controller.ts
+import { Controller, Get } from '@nestjs/common';
 import { FxRatesService } from './services/fx-rates.service';
 
-@Controller('fx-rates')
+@Controller()
 export class AppController {
   constructor(private readonly fxRatesService: FxRatesService) {}
 
   @Get()
-  getRates() {
-    return this.fxRatesService.getLatestRates();
+  getWelcomeMessage() {
+    return 'Hello welcome to Forex trading system';
   }
 
-  // @Post('fx-conversion')
-  // performFxConversion(@Body() conversionRequest: { quoteId: string; fromCurrency: string; toCurrency: string; amount: number }) {
-  //   // Implementation for FX conversion functionality
-  //   // This would use the quoteId to ensure the rate is still valid and perform the conversion
-  // }
+  @Get('fx-rates')
+  getFxRates() {
+    const latestRates = this.fxRatesService.getLatestRates();
+    if (!latestRates) {
+      throw new Error('No rates available');
+    }
+    // Return only quoteId and expiry_at
+    return {
+      quoteId: latestRates.quoteId,
+      expiry_at: latestRates.expiry_at,
+    };
+  }
 }
-

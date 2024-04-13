@@ -19,7 +19,7 @@ describe('AppController', () => {
 
   describe('getRates', () => {
     it('should return the exchange rate for USD', () => {
-      expect(appController.getRates()).toBe(1.0);
+      expect(appController.getFxRates()).toBe(1.0);
     });
   });
 });

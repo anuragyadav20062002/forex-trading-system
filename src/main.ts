@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
+// src/main.ts
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-// eslint-disable-next-line prettier/prettier
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
