@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Body, Controller, Get, HttpException, HttpStatus, Post, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, HttpStatus, Post, Req, Res, UseGuards } from '@nestjs/common';
 import { FxRatesService } from './services/fx-rates.service';
 import { ConversionRequestDto } from './dtos/conversion-request.dto';
 import { FxConversionService } from './services/fx-conversion.service';
@@ -7,6 +7,7 @@ import { AccountService } from './services/account.service'; // Make sure to imp
 import { TopUpDto } from './dtos/top-up.dto'; // Import the DTO for top-up
 import { JwtAuthGuard } from './auth/jwt-auth.guard'; // Import JwtAuthGuard for authentication
 import { BalanceResponseDto } from './dtos/balance-response.dto';
+import { Response } from 'express';
 
 @Controller()
 export class AppController {
@@ -36,12 +37,12 @@ export class AppController {
   }
 
   @Post('/fx-conversion')
-  async convertCurrency(@Body() conversionRequest: ConversionRequestDto) {
+  async convertCurrency(@Body() conversionRequest: ConversionRequestDto, @Res() response: Response) {
     try {
       const conversionResult = await this.fxConversionService.convertCurrency(conversionRequest);
-      return conversionResult;
+      return response.status(HttpStatus.OK).send(conversionResult);
     } catch (error) {
-      throw new HttpException(error.message, HttpStatus.BAD_REQUEST);
+      return response.status(HttpStatus.BAD_REQUEST).send({ message: error.message });
     }
   }
 

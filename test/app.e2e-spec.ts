@@ -9,6 +9,29 @@ import { JwtAuthGuard } from './../src/auth/jwt-auth.guard';
 import { FxRatesService } from './../src/services/fx-rates.service';
 import { mockFxRatesService } from './mocks/fx-rates.service';
 import { AuthService } from './../src/services/auth.service';
+import { FxConversionService } from '../src/services/fx-conversion.service';
+import { mockFxConversionService } from './mocks/fx-conversion.service';
+
+// Mock setup for FxRatesService
+// jest.mock('../src/services/fx-rates.service', () => ({
+//   getLatestRates: jest.fn().mockResolvedValue({
+//     quoteId: "8d0adfca-d91e-4f01-87d4-1e5df7813218",
+//     expiry_at: "2024-04-13110:54:30.0052",
+//   }),
+//   fetchRates: jest.fn().mockResolvedValue({
+//     quoteId: "8d0adfca-d91e-4f01-87d4-1e5df7813218",
+//     expiry_at: "2024-04-13110:54:30.0052",
+//     rates: [
+//       { forexPair: "USD/INR", exchangeRateValue: "83.52000000" },
+//       { forexPair: "USD/EUR", exchangeRateValue: "0.93930000" },
+//       { forexPair: "USD/GBP", exchangeRateValue: "0.80310000" },
+//       { forexPair: "USD/CHF", exchangeRateValue: "0.91390000" },
+//       { forexPair: "USD/AUD", exchangeRateValue: "1.54630000" },
+//       { forexPair: "USD/CAD", exchangeRateValue: "1.37720000" },
+//     ],
+//   }), // Adjust based on expected behavior
+//   // Add other mocked methods if needed
+// }));
 
 describe('AppController (e2e)', () => {
   let app: INestApplication;
@@ -21,6 +44,8 @@ describe('AppController (e2e)', () => {
     .useClass(MockJwtAuthGuard) // Use the mock guard
     .overrideProvider(FxRatesService)
     .useValue(mockFxRatesService) // Use the mock service
+    .overrideProvider(FxConversionService)
+    .useValue(mockFxConversionService) // Use the mock service
     .overrideProvider(AuthService)
     .useValue({
       signUp: jest.fn().mockImplementation((dto) => {
@@ -104,6 +129,26 @@ describe('AppController (e2e)', () => {
       .expect(401)
       .expect((res) => {
         expect(res.body.message).toContain('Invalid credentials');
+      });
+  });
+
+  it('/fx-conversion (POST) should convert currency', async () => {
+    const conversionRequestDto = {
+      quoteId: "8d0adfca-d91e-4f01-87d4-1e5df7813218",
+      fromCurrency: "USD",
+      toCurrency: "INR",
+      amount: 100,
+    };
+
+    await request(app.getHttpServer())
+      .post('/fx-conversion')
+      .send(conversionRequestDto)
+      .expect(200)
+      .expect((res) => {
+        expect(res.body).toEqual(expect.objectContaining({
+          convertedAmount: expect.any(Number),
+          currency: conversionRequestDto.toCurrency,
+        }));
       });
   });
 
