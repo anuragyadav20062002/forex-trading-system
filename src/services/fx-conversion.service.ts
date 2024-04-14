@@ -8,7 +8,6 @@ export class FxConversionService {
   constructor(private fxRatesService: FxRatesService) {}
 
   async convertCurrency(conversionRequest: ConversionRequestDto): Promise<{ convertedAmount: number; currency: string }> {
-    // Assume that conversionRequest has already been validated by DTO class
 
     const { quoteId, fromCurrency, toCurrency, amount } = conversionRequest;
 

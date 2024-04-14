@@ -1,7 +1,8 @@
 /* eslint-disable prettier/prettier */
 // src/schemas/user.schema.ts
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Document, Types } from 'mongoose';
+import { Account } from './account.schema';
 
 export type UserDocument = User & Document;
 
@@ -15,6 +16,9 @@ export class User {
 
   @Prop({ required: true })
   password: string;
+
+  @Prop({ type: [{ type: Types.ObjectId, ref: 'Account' }] })
+  accounts: Account[];
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

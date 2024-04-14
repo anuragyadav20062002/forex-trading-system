@@ -32,10 +32,11 @@ export class AuthService {
     }
 
     // Payload to include in the JWT
-    const payload = { userId: user.userId, sub: user._id };
+    const payload = { userId: user.userId };
+    const accessToken = this.jwtService.sign(payload); // Generate JWT token
 
     return {
-      accessToken: this.jwtService.sign(payload), // Generate JWT token
+      accessToken: accessToken, 
     };
   }
 }
