@@ -5,11 +5,16 @@ import { SignUpDto } from './dtos/sign-up.dto';
 import { SignInDto } from './dtos/sign-in.dto';
 import { AuthService } from './services/auth.service';
 import { Response } from 'express';
+import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 
+@ApiTags('auth')
 @Controller()
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
+  @ApiOperation({ summary: 'Sign up a new user' })
+  @ApiResponse({ status: 201, description: 'User successfully signed up.' })
+  @ApiResponse({ status: 400, description: 'User with this email already exists.' })
   @Post('/sign-up')
   async signUp(@Body() signUpDto: SignUpDto) {
     const user = await this.authService.signUp(signUpDto);
@@ -19,19 +24,18 @@ export class AuthController {
     return user;
   }
 
+  @ApiOperation({ summary: 'Sign in an existing user' })
+  @ApiResponse({ status: 200, description: 'User successfully signed in.' })
+  @ApiResponse({ status: 401, description: 'Unauthorized.' })
   @Post('sign-in')
   async signIn(@Body() signInDto: SignInDto, @Res() response: Response) {
     try {
         const { accessToken } = await this.authService.signIn(signInDto);
-        // Set the cookie with the access token
         response.cookie('access_token', accessToken, {
           httpOnly: true,
-          // secure: true, // Uncomment if using HTTPS
         });
-        // Send the response with the access token in the body as well
         return response.status(HttpStatus.OK).send({ accessToken });
       } catch (error) {
-        // Handle error
         return response.status(HttpStatus.UNAUTHORIZED).send({ message: error.message });
       }
     }
