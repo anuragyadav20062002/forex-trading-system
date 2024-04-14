@@ -13,7 +13,7 @@ export class FxRatesService {
   }
 
   @Cron(CronExpression.EVERY_30_SECONDS)
-  private async fetchRates() {
+  public async fetchRates() {
     const baseCurrency = 'USD';
     const targetCurrencies = ['INR', 'EUR', 'GBP', 'CHF', 'AUD', 'CAD', 'NZD', 'HKD', 'SGD', 'JPY'];
     const quoteId = uuidv4(); // Generate a unique quoteId for this set of rates
@@ -21,7 +21,7 @@ export class FxRatesService {
     const ratesArray: Array<{ forexPair: string; exchangeRateValue: string }> = [];
 
     for (const targetCurrency of targetCurrencies) {
-      const url = `https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=${baseCurrency}&to_currency=${targetCurrency}&apikey=7FWJYDRGL1V9R6J8`;
+      const url = `https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=${baseCurrency}&to_currency=${targetCurrency}&apikey=3HIF54QLJ1KSYBBI`;
 
       try {
         const response = await axios.get(url);

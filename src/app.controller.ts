@@ -1,12 +1,18 @@
 /* eslint-disable prettier/prettier */
 // src/app.controller.ts
 // src/app.controller.ts
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, HttpException, HttpStatus, Post } from '@nestjs/common';
 import { FxRatesService } from './services/fx-rates.service';
+import { ConversionRequestDto } from './dtos/conversion-request.dto';
+import { FxConversionService } from './services/fx-conversion.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly fxRatesService: FxRatesService) {}
+  constructor(
+    private readonly fxRatesService: FxRatesService,
+    private readonly fxConversionService: FxConversionService
+  ) {}
+  
 
   @Get()
   getWelcomeMessage() {
@@ -25,4 +31,15 @@ export class AppController {
       expiry_at: latestRates.expiry_at,
     };
   }
+
+  @Post('/fx-conversion')
+  async convertCurrency(@Body() conversionRequest: ConversionRequestDto) {
+    try {
+      const conversionResult = await this.fxConversionService.convertCurrency(conversionRequest);
+      return conversionResult;
+    } catch (error) {
+      throw new HttpException(error.message, HttpStatus.BAD_REQUEST);
+    }
+  }
+
 }
