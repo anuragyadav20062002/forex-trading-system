@@ -28,12 +28,23 @@ $ npm run test:e2e
 After all tests pass, you can check all the routes
 Routes
 <ul>
-<li>/sign-in</li>
-<li>/sign-up</li>
-<li>/accounts/topup</li>
-<li>/accounts/balance</li>
-<li>/fx-rates</li>
-<li>/fx-conversion</li>
+<li>
+ /sign-in - Request Body- {
+    "userId":string,
+    "password": string
+}</li>
+<li>
+ /sign-up - Request Body {
+    "userId":string,
+    "email":string,
+    "password": string
+}
+</li>
+<li>/accounts/topup - Request Body - { "currency": string, "amount": number }</li>
+<li>/accounts/balance - Get Request</li>
+<li>/fx-rates - Get Request</li>
+<li>/fx-conversion - Request Body - { "quoteId": quote id from fx-rates API, "fromCurrency": string,
+"toCurrency": string, "amount": number }</li>
 </ul>
 
 
