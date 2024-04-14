@@ -1,9 +1,10 @@
 /* eslint-disable prettier/prettier */
 // src/auth.controller.ts
-import { Body, Controller, Post, BadRequestException } from '@nestjs/common';
+import { Body, Controller, Post, BadRequestException, Res, HttpStatus } from '@nestjs/common';
 import { SignUpDto } from './dtos/sign-up.dto';
 import { SignInDto } from './dtos/sign-in.dto';
 import { AuthService } from './services/auth.service';
+import { Response } from 'express';
 
 @Controller()
 export class AuthController {
@@ -18,8 +19,20 @@ export class AuthController {
     return user;
   }
 
-  @Post('/sign-in')
-  async signIn(@Body() signInDto: SignInDto) {
-    return this.authService.signIn(signInDto);
-  }
+  @Post('sign-in')
+  async signIn(@Body() signInDto: SignInDto, @Res() response: Response) {
+    try {
+        const { accessToken } = await this.authService.signIn(signInDto);
+        // Set the cookie with the access token
+        response.cookie('access_token', accessToken, {
+          httpOnly: true,
+          // secure: true, // Uncomment if using HTTPS
+        });
+        // Send the response with the access token in the body as well
+        return response.status(HttpStatus.OK).send({ accessToken });
+      } catch (error) {
+        // Handle error
+        return response.status(HttpStatus.UNAUTHORIZED).send({ message: error.message });
+      }
+    }
 }
