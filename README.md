@@ -27,11 +27,19 @@ $ npm run test:e2e
 
 After all tests pass, you can check all the routes
 Routes
-/sign-in
-/sign-up
-/accounts/topup
-/accounts/balance
-/fx-rates
-/fx-conversion
+<ul>
+<li>/sign-in</li>
+<li>/sign-up</li>
+<li>/accounts/topup</li>
+<li>/accounts/balance</li>
+<li>/fx-rates</li>
+<li>/fx-conversion</li>
+</ul>
+
+
+
+
+
+
 
 
