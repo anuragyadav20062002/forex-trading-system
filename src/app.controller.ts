@@ -6,6 +6,7 @@ import { FxConversionService } from './services/fx-conversion.service';
 import { AccountService } from './services/account.service'; // Make sure to import AccountService
 import { TopUpDto } from './dtos/top-up.dto'; // Import the DTO for top-up
 import { JwtAuthGuard } from './auth/jwt-auth.guard'; // Import JwtAuthGuard for authentication
+import { BalanceResponseDto } from './dtos/balance-response.dto';
 
 @Controller()
 export class AppController {
@@ -50,6 +51,15 @@ export class AppController {
     // Assuming the user object is attached to the request by JwtAuthGuard
     const userId = req.userId;
     return this.accountService.topUp(userId, topUpDto);
+  }
+
+  @Get('/accounts/balance')
+  @UseGuards(JwtAuthGuard) // Protect the endpoint with JWT authentication
+  async getBalances(@Req() req): Promise<BalanceResponseDto> {
+    
+    const userId = req.userId;
+    const balances = await this.accountService.getBalances(userId);
+    return { balances };
   }
 
 }

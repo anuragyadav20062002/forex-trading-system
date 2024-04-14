@@ -10,20 +10,40 @@ import { TopUpDto } from '../dtos/top-up.dto';
 export class AccountService {
   constructor(@InjectModel(Account.name) private accountModel: Model<AccountDocument>) {}
 
-  async topUp(userId: string, topUpDto: TopUpDto): Promise<Account> {
+  async topUp(userId: string, topUpDto: TopUpDto): Promise<{ currency: string; amount: number; }> {
     const { currency, amount } = topUpDto;
+    let updatedAccount;
+  
     const account = await this.accountModel.findOne({ user: userId, currency });
-
+  
     if (account) {
       account.balance += amount;
-      return account.save();
+      updatedAccount = await account.save();
     } else {
       const newAccount = new this.accountModel({
         user: userId,
         currency,
         balance: amount,
       });
-      return newAccount.save();
+      updatedAccount = await newAccount.save();
     }
+  
+    // Return the currency and top-up amount
+    return {
+      currency: updatedAccount.currency,
+      amount: amount, // This is the top-up amount, not the updated balance
+    };
   }
+
+  async getBalances(userId: string): Promise<Record<string, number>> {
+    const accounts = await this.accountModel.find({ user: userId });
+    const balances = accounts.reduce((acc, account) => {
+      acc[account.currency] = account.balance;
+      return acc;
+    }, {});
+
+    return balances;
+  }
+  
 }
+
