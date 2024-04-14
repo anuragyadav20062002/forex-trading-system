@@ -21,7 +21,7 @@ export class FxRatesService {
     const ratesArray: Array<{ forexPair: string; exchangeRateValue: string }> = [];
 
     for (const targetCurrency of targetCurrencies) {
-      const url = `https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=${baseCurrency}&to_currency=${targetCurrency}&apikey=FA7Y3FBZRA7VKGBN`;
+      const url = `https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=${baseCurrency}&to_currency=${targetCurrency}&apikey=${process.env.API_KEY}`;
 
       try {
         const response = await axios.get(url);
