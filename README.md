@@ -28,7 +28,7 @@ $ npm run test:e2e
 After all tests pass, you can check all the routes
 Routes
 <ul>
- <li>/api - Get Swagger Docs to all API endpoints.<li>
+ <li>/api - Get Swagger Docs to all API endpoints.</li>
 <li>
  /sign-in - Request Body- {
     "userId":string,
