@@ -76,7 +76,7 @@ Request Body:
 
 ## Postman Workflow Video
 
-[<img src="https://i9.ytimg.com/vi_webp/OOeI6PDjuIY/mq3.webp?sqp=CNSF9LAG-oaymwEmCMACELQB8quKqQMa8AEB-AH-CYACqAWKAgwIABABGEwgWihlMA8=&rs=AOn4CLBJj5eMD7IC2bARYZydbNY2YfHK-w" width="65%">](https://youtu.be/OOeI6PDjuIY "Postman Workflow")
+[<img src="https://i9.ytimg.com/vi_webp/OOeI6PDjuIY/mq3.webp?sqp=CNSF9LAG-oaymwEmCMACELQB8quKqQMa8AEB-AH-CYACqAWKAgwIABABGEwgWihlMA8=&rs=AOn4CLBJj5eMD7IC2bARYZydbNY2YfHK-w" width="45%">](https://youtu.be/OOeI6PDjuIY "Postman Workflow")
 
 
 
