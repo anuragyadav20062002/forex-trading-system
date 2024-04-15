@@ -23,31 +23,47 @@ npm run start:dev
 $ npm run test:e2e
 ```
 
-## Support
+## api endpoints
 
-After all tests pass, you can check all the routes
-Routes
-<ul>
- <li>
-    `/api    - Get Swagger Docs to all API endpoints.</li>
-<li>
- `/sign-in` - Request Body- {
-    "userId":string,
-    "password": string
-}</li>
-<li>
- `/sign-up` - Request Body {
-    "userId":string,
-    "email":string,
-    "password": string
+- `/api` - Get Swagger Docs for all API endpoints.
+- `/sign-in` - 
+Request Body:
+```
+ { 
+     "userId":string, 
+     "password": string 
+ }
+ ```
+
+- `/sign-up` - 
+
+Request Body:
+```
+{ 
+    "userId":string, 
+    "email":string, 
+    "password": string 
 }
-</li>
-<li>`/accounts/topup` - Request Body - { "currency": string, "amount": number }</li>
-<li>`/accounts/balance` - Get Request</li>
-<li>`/fx-rates` - Get Request</li>
-<li>`/fx-conversion` - Request Body - { "quoteId": quote id from fx-rates API, "fromCurrency": string,
-"toCurrency": string, "amount": number }</li>
-</ul>
+```
+- `/accounts/topup` - 
+Request Body:
+```
+{ "currency": string, "amount": number }
+```
+- `/accounts/balance` - Get Request
+
+- `/fx-rates` - Get Request
+
+- `/fx-conversion` - 
+Request Body:
+```
+{ 
+    "quoteId": quote id from fx-rates API, 
+    "fromCurrency": string, 
+    "toCurrency": string, 
+    "amount": number 
+}
+```
 
 
 ## Steps
@@ -63,6 +79,8 @@ Routes
 ## Drive Link
 
 https://drive.google.com/file/d/1_kre3Pb9tOKUGOvJNO_FwjRiWoVomoWA/view?usp=sharing
+
+[<img src="https://i9.ytimg.com/vi_webp/OOeI6PDjuIY/mq3.webp?sqp=CNSF9LAG-oaymwEmCMACELQB8quKqQMa8AEB-AH-CYACqAWKAgwIABABGEwgWihlMA8=&rs=AOn4CLBJj5eMD7IC2bARYZydbNY2YfHK-w" width="50%">](https://youtu.be/OOeI6PDjuIY "Postman Workflow")
 
 
 
