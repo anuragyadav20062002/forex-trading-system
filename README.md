@@ -49,6 +49,15 @@ Routes
 </ul>
 
 
+##Steps
+<ul>
+<li>Firstly Go to /sign-up to create an account - Remember your userId and Password</li>
+ <li>Then go to sign-in and Sign-in using your credentials and save the access token generated in response.</li>
+ <li>After this to access /accounts/topup you have to put the access token as Bearer Token in Postman for Authorization</li>
+ <li>Same for /accounts/balance</li>
+ <li>Go to /fx-rates to fetch live exchange rates which will be stored in cache memory, save the quoteId which comes in the response along with expiration time.</li>
+ <li>Go to /fx-conversion in the request body paste the saved quoteId along with the Target and Base Currency to Get the exchange rate</li>
+</ul>
 
 
 
