@@ -23,7 +23,7 @@ import { AccountModule } from './modules/account.module';
   imports: [
     AuthModule,
     ConfigModule.forRoot(),
-    MongooseModule.forRoot(process.env.MONGO_DB_URI),
+    MongooseModule.forRoot('mongodb+srv://anuragyadav20602:B9gnPdrPFyHXi6nV@cluster0.lvan3xr.mongodb.net/'),
     UserModule,
     AccountModule,
     JwtModule.register({
