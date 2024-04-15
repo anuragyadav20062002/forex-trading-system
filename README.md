@@ -76,11 +76,9 @@ Request Body:
  <li>Go to `/fx-conversion` in the request body paste the saved quoteId along with the Target and Base Currency to Get the exchange rate</li>
 </ul>
 
-## Drive Link
+## Postman Workflow Video
 
-https://drive.google.com/file/d/1_kre3Pb9tOKUGOvJNO_FwjRiWoVomoWA/view?usp=sharing
-
-[<img src="https://i9.ytimg.com/vi_webp/OOeI6PDjuIY/mq3.webp?sqp=CNSF9LAG-oaymwEmCMACELQB8quKqQMa8AEB-AH-CYACqAWKAgwIABABGEwgWihlMA8=&rs=AOn4CLBJj5eMD7IC2bARYZydbNY2YfHK-w" width="50%">](https://youtu.be/OOeI6PDjuIY "Postman Workflow")
+[<img src="https://i9.ytimg.com/vi_webp/OOeI6PDjuIY/mq3.webp?sqp=CNSF9LAG-oaymwEmCMACELQB8quKqQMa8AEB-AH-CYACqAWKAgwIABABGEwgWihlMA8=&rs=AOn4CLBJj5eMD7IC2bARYZydbNY2YfHK-w" width="65%">](https://youtu.be/OOeI6PDjuIY "Postman Workflow")
 
 
 
