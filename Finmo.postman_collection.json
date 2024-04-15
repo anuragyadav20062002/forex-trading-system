@@ -1,0 +1,214 @@
+{
+	"info": {
+		"_postman_id": "11acb3c2-2903-41b6-ab69-34ec975c4d87",
+		"name": "Finmo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17257930"
+	},
+	"item": [
+		{
+			"name": "FX-RATES",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/fx-rates",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"fx-rates"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Accounts-Balance",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIwMDAyIiwiaWF0IjoxNzEzMTY1NzY4LCJleHAiOjE3MTMxNjkzNjh9.dmxFvPjir33iFor_KBGK_q_TlPv9p_L9dOhDojhV2UY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/accounts/balance",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"accounts",
+						"balance"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sign Up",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\":\"0001\",\r\n    \"email\":\"adi@gmail.com\",\r\n    \"password\": \"Anura#123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/sign-up",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"sign-up"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Accounts-Topup",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIwMDAyIiwiaWF0IjoxNzEzMTY1NzY4LCJleHAiOjE3MTMxNjkzNjh9.dmxFvPjir33iFor_KBGK_q_TlPv9p_L9dOhDojhV2UY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"currency\": \"INR\",\r\n    \"amount\": 1000\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/accounts/topup",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"accounts",
+						"topup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fx-Conversion",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"quoteId\": \"c5b49a47-5db4-4955-8f5c-058f74a0ab06\", \r\n\"fromCurrency\": \"USD\",\r\n\"toCurrency\": \"AUD\",\r\n \"amount\": 10\r\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/fx-conversion",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"fx-conversion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=USD&to_currency=INR&apikey=63IOOEQ9GJABRPTC",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=USD&to_currency=INR&apikey=63IOOEQ9GJABRPTC",
+					"protocol": "https",
+					"host": [
+						"www",
+						"alphavantage",
+						"co"
+					],
+					"path": [
+						"query"
+					],
+					"query": [
+						{
+							"key": "function",
+							"value": "CURRENCY_EXCHANGE_RATE"
+						},
+						{
+							"key": "from_currency",
+							"value": "USD"
+						},
+						{
+							"key": "to_currency",
+							"value": "INR"
+						},
+						{
+							"key": "apikey",
+							"value": "63IOOEQ9GJABRPTC"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sign In",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"userId\": \"0002\",\r\n  \"password\": \"Anurag#321\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/sign-in",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"sign-in"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
