@@ -23,6 +23,16 @@ npm run start:dev
 $ npm run test:e2e
 ```
 
+## Set Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file:
+
+```bash
+API_KEY='Your_Alphavantage_API_Key'
+JWT_SECRET=anystring
+MONGO_DB_URI='mongodb+srv://<username>:<password>@cluster0.lvan3xr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
+```
+
 ## api endpoints
 
 - `/api` - Get Swagger Docs for all API endpoints.
