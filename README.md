@@ -1,4 +1,4 @@
-
+`
 ## Description
 
  Forex Trading System using Nest.js.Implementing several APIs that allow users to top up their account, fetch live FX conversion rates, perform FX conversions, and check their account balances.
@@ -86,7 +86,7 @@ Request Body:
 
 ## Postman Workflow Video
 
-[<img src="https://i9.ytimg.com/vi_webp/OOeI6PDjuIY/mq3.webp?sqp=CNSF9LAG-oaymwEmCMACELQB8quKqQMa8AEB-AH-CYACqAWKAgwIABABGEwgWihlMA8=&rs=AOn4CLBJj5eMD7IC2bARYZydbNY2YfHK-w" width="45%">](https://youtu.be/OOeI6PDjuIY "Postman Workflow")
+[<img src="https://i9.ytimg.com/vi_webp/OOeI6PDjuIY/mq1.webp?sqp=CJzP9bAG-oaymwEmCMACELQB8quKqQMa8AEB-AH-CYACqAWKAgwIABABGGQgZChkMA8=&rs=AOn4CLDF2Pl4uOPWK3-UcWmuKtTGXfPNdw" width="45%">](https://youtu.be/OOeI6PDjuIY "Postman Workflow")
 
 
 
