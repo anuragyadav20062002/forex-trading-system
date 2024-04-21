@@ -84,9 +84,9 @@ Request Body:
 5. Go to `"/fx-rates"` to fetch live exchange rates which will be stored in cache memory, save the quoteId which comes in the response along with expiration time.
 6. Go to `"/fx-conversion"` in the request body paste the saved quoteId along with the Target and Base Currency to get the exchange rate.
 
-## Postman Workflow Video
+## Postman Workflow
 
-[<img src="https://i9.ytimg.com/vi_webp/OOeI6PDjuIY/mq1.webp?sqp=CJzP9bAG-oaymwEmCMACELQB8quKqQMa8AEB-AH-CYACqAWKAgwIABABGGQgZChkMA8=&rs=AOn4CLDF2Pl4uOPWK3-UcWmuKtTGXfPNdw" width="45%">](https://youtu.be/OOeI6PDjuIY "Postman Workflow")
+https://youtu.be/OOeI6PDjuIY?si=p9q5u2al4EXwoPbz
 
 
 
