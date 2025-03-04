@@ -3,6 +3,11 @@
 
  Forex Trading System using Nest.js.Implementing several APIs that allow users to top up their account, fetch live FX conversion rates, perform FX conversions, and check their account balances.
 
+## Postman Workflow
+
+https://youtu.be/OOeI6PDjuIY?si=p9q5u2al4EXwoPbz
+
+
 ## Installation
 
 ```bash
@@ -84,9 +89,6 @@ Request Body:
 5. Go to `"/fx-rates"` to fetch live exchange rates which will be stored in cache memory, save the quoteId which comes in the response along with expiration time.
 6. Go to `"/fx-conversion"` in the request body paste the saved quoteId along with the Target and Base Currency to get the exchange rate.
 
-## Postman Workflow
-
-https://youtu.be/OOeI6PDjuIY?si=p9q5u2al4EXwoPbz
 
 
 
